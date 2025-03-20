@@ -1,0 +1,57 @@
+[tool.poetry]
+package-mode = false
+name = "code_review_exercise_python"
+version = "1.0.0"
+description = "A web server that provides a basic HTTP API for querying the dependency tree of an NPM package."
+authors = ["Snyk"]
+
+[tool.poetry.dependencies]
+python = "^3.13"
+requests = "^2.32.3"
+node-semver = "^0.9.0"
+fastapi = "^0.115.6"
+uvicorn = "^0.34.0"
+httpx = "^0.28.1"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.4"
+anyio = "^4.8.0"
+trio = "^0.28.0"
+responses = "^0.25.6"
+isort = "^6.0.0"
+flake8 = "^7.1.1"
+black = "^25.1.0"
+mypy = "^1.15.0"
+pre-commit = "^4.1.0"
+requests-mock = "^1.12.1"
+
+[tool.pytest]
+asyncio_mode = "auto"
+
+[tool.black]
+target_version = ["py313"]
+exclude = ".git/"
+
+[tool.isort]
+line_length = 99
+profile = "black"
+combine_as_imports = true
+known_tests = "tests"
+sections = [
+  "FUTURE",
+  "STDLIB",
+  "THIRDPARTY",
+  "FIRSTPARTY",
+  "LOCALFOLDER",
+  "TESTS"
+]
+
+[tool.mypy]
+check_untyped_defs = true
+ignore_missing_imports = true
+no_implicit_optional = true
+warn_return_any = true
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
