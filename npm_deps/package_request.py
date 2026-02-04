@@ -3,12 +3,14 @@ from http import HTTPStatus
 
 import requests
 from npm_deps.error import PackageNotFoundError, PackageFetchError
+import functools
 
 NPM_REGISTRY_URL = "https://registry.npmjs.org"
 
 logger = logging.getLogger(__name__)
 
 
+@functools.lru_cache(maxsize=128)
 async def request_package(name: str) -> dict:
     logger.debug("Calling for package: %s", name)
     response_error = None
