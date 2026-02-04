@@ -15,7 +15,7 @@ To install dependencies and start the server in development mode:
 
 ```sh
 poetry install
-poetry run uvicorn app:app --host="127.0.0.1" --port="3000" --log-level="info" --reload
+poetry run uvicorn app:app --host="127.0.0.1" --port="3000" --log-level="info" --reload --log-config=log_config.yaml
 ```
 
 ### Running in a Docker container
